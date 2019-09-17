@@ -1,7 +1,13 @@
 # pull ubuntu image
 FROM ubuntu:18.04
 
-ENV DEBIAN_FRONTEND=noninteractive
+# make directory for game and logs
+RUN mkdir game logs
+
+ENV DEBIAN_FRONTEND=noninteractive \
+    APPID=232250 \
+    GAME_PATH=/game \
+    STEAMCMD=/hlserver/steamcmd.sh
 
 # install glibc & wget
 RUN apt-get update && \
@@ -31,11 +37,9 @@ RUN wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz 
     tar zxf steamcmd_linux.tar.gz
 
 # add the update script
-ADD tf2_ds.txt .
-ADD update.sh .
+ADD force_install.sh .
 
 # make the update script executable
 RUN chmod +x force_install.sh
 
-# add optional volumes 
-VOLUME /tf2
+VOLUME /game /logs
