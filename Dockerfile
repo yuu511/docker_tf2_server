@@ -35,4 +35,7 @@ ADD tf2_ds.txt .
 ADD update.sh .
 
 # make the update script executable
-RUN chmod +x update.sh
+RUN chmod +x force_install.sh
+
+# add optional volumes 
+VOLUME /tf2
