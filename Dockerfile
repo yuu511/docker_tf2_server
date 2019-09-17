@@ -29,3 +29,10 @@ WORKDIR /hlserver
 # get steamcmd_linux.tar.gz
 RUN wget https://steamcdn-a.akamaihd.net/client/installer/steamcmd_linux.tar.gz && \
     tar zxf steamcmd_linux.tar.gz
+
+# add the update script
+ADD tf2_ds.txt .
+ADD update.sh .
+
+# make the update script executable
+RUN chmod +x update.sh
