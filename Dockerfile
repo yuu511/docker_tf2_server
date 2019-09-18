@@ -5,7 +5,7 @@ FROM ubuntu:18.04
 RUN mkdir game logs
 
 ENV DEBIAN_FRONTEND=noninteractive \
-    APPID=232250 \
+    APP_ID=232250 \
     GAME_PATH=/game \
     STEAMCMD=/hlserver/steamcmd.sh
 
